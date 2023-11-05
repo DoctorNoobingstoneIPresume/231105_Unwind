@@ -19,7 +19,117 @@ But instead we might just wish to run the `./_Go` script which builds and tests 
 
 In this project, the `main` function calls `f <100>` which calls `f <99>` which calls `f <98>` and so on until `f <1>` calls `f <0>`, which calls `std::abort`.
 
-For the version built with debugging information, we can see the complete backtrace,
+For the version built with debugging information, we can see the complete backtrace:
+
+```
+#0  __pthread_kill_implementation (no_tid=0, signo=6, threadid=140737347905344) at ./nptl/pthread_kill.c:44
+#1  __pthread_kill_internal (signo=6, threadid=140737347905344) at ./nptl/pthread_kill.c:78
+#2  __GI___pthread_kill (threadid=140737347905344, signo=signo@entry=6) at ./nptl/pthread_kill.c:89
+#3  0x00007ffff7a55476 in __GI_raise (sig=sig@entry=6) at ../sysdeps/posix/raise.c:26
+#4  0x00007ffff7a3b7f3 in __GI_abort () at ./stdlib/abort.c:79
+#5  0x0000000000401076 in f<0u> (arg=arg@entry=0) at f.cpp:8
+#6  0x00000000004011e9 in f<1u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#7  f<2u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#8  f<3u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#9  f<4u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#10 f<5u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#11 f<6u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#12 f<7u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#13 f<8u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#14 f<9u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#15 f<10u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#16 f<11u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#17 f<12u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#18 f<13u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#19 f<14u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#20 f<15u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#21 f<16u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#22 f<17u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#23 f<18u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#24 f<19u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#25 f<20u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#26 f<21u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#27 f<22u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#28 f<23u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#29 f<24u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#30 f<25u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#31 f<26u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#32 f<27u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#33 f<28u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#34 f<29u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#35 f<30u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#36 f<31u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#37 f<32u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#38 0x0000000000401289 in f<33u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#39 f<34u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#40 f<35u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#41 f<36u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#42 f<37u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#43 f<38u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#44 f<39u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#45 f<40u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#46 f<41u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#47 f<42u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#48 f<43u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#49 f<44u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#50 f<45u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#51 f<46u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#52 f<47u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#53 f<48u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#54 f<49u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#55 f<50u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#56 f<51u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#57 f<52u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#58 f<53u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#59 f<54u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#60 f<55u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#61 f<56u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#62 f<57u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#63 f<58u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#64 f<59u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#65 f<60u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#66 f<61u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#67 f<62u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#68 f<63u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#69 f<64u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#70 0x0000000000401329 in f<65u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#71 f<66u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#72 f<67u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#73 f<68u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#74 f<69u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#75 f<70u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#76 f<71u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#77 f<72u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#78 f<73u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#79 f<74u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#80 f<75u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#81 f<76u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#82 f<77u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#83 f<78u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#84 f<79u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#85 f<80u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#86 f<81u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#87 f<82u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#88 f<83u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#89 f<84u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#90 f<85u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#91 f<86u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#92 f<87u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#93 f<88u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#94 f<89u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#95 f<90u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#96 f<91u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#97 f<92u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#98 f<93u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#99 f<94u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#100 f<95u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#101 f<96u> (arg=arg@entry=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#102 0x000000000040108d in f<97u> (arg=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#103 f<98u> (arg=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#104 f<99u> (arg=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#105 f<100u> (arg=0) at /home/ubuntu/Projects/231105_Unwind/f.hpp:6
+#106 main () at Main.cpp:7
+```
 
 For the version built without debugging information, we can only see:
 
