@@ -1,0 +1,41 @@
+= [2023-11-05] Debugging information
+:docinfo: shared
+:date:    2023-11-05
+:toc:     macro
+
+== README
+
+This is a demonstration of how backtraces are incorrectly generated in the absence of debugging information.
+
+To enable debugging information, we could build the project as follows:
+
+```
+g++ -g 'Main.cpp' 'f.cpp' -o 'Main'
+```
+
+To disable debugging information, we skip the `-g` option.
+
+But instead we might just wish to run the `./_Go` script which builds and tests both with debugging information and without.
+
+In this project, the `main` function calls `f <100>` which calls `f <99>` which calls `f <98>` and so on until `f <1>` calls `f <0>`, which calls `std::abort`.
+
+For the version built with debugging information, we can see the complete backtrace,
+
+For the version built without debugging information, we can only see:
+
+```
+#0  __pthread_kill_implementation (no_tid=0, signo=6, threadid=140737347905344) at ./nptl/pthread_kill.c:44
+#1  __pthread_kill_internal (signo=6, threadid=140737347905344) at ./nptl/pthread_kill.c:78
+#2  __GI___pthread_kill (threadid=140737347905344, signo=signo@entry=6) at ./nptl/pthread_kill.c:89
+#3  0x00007ffff7a55476 in __GI_raise (sig=sig@entry=6) at ../sysdeps/posix/raise.c:26
+#4  0x00007ffff7a3b7f3 in __GI_abort () at ./stdlib/abort.c:79
+#5  0x0000000000401076 in float f<0u>(float) ()
+#6  0x00000000004011e9 in float f<32u>(float) ()
+#7  0x0000000000401289 in float f<64u>(float) ()
+#8  0x0000000000401329 in float f<96u>(float) ()
+#9  0x000000000040108d in main ()
+```
+
+This is because the toolchain has inlined most of the function calls.
+
+The complete output (which might help us compare the backtraces) is here: link:2023-11-06%2001-27%20gdb.html[Download].

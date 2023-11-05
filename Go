@@ -1,0 +1,73 @@
+#!/bin/bash
+set -e -o pipefail
+
+QuoteArgs ()
+{
+	local rv=
+	{
+		local separator=
+		
+		local arg
+		for arg in "$@"; do
+			quote=
+			{
+				if [[ "${arg}" =~ [[:space:]] ]]; then
+					quote="'"
+				fi
+			}
+			
+			rv="${rv}${separator}${quote}${arg}${quote}"
+			separator=' '
+		done
+	}
+	
+	echo "${rv}"
+}
+
+Main ()
+{
+	rm -f 'README.html' 'Main' *.exe *.o *.asm2 *.asm
+	
+	if which asciidoctor &>/dev/null; then
+		asciidoctor -b 'html5' 'README.adoc'
+	fi
+	
+	local options0=(-O2)
+	
+	local g
+	for ((g = 1; g >= 0; --g)); do
+		printf "# g %u:\n{\n" "$((g))"
+		local -a options=()
+		{
+			options+=("${options0[@]}")
+			if ((g)); then
+				options+=('-g')
+			fi
+		}
+		
+		printf "options: %s\n" "$(QuoteArgs "${options[@]}")"
+		
+		local -a units=('Main' 'f')
+		local -a objects=()
+		{
+			local unit
+			for unit in "${units[@]}"; do
+				object="${unit}.o"
+				g++ "${options[@]}" -S -m'asm=intel' "${unit}.cpp" -o "${unit}.asm"
+				cat "${unit}.asm" | grep -Piv '^\s*\.' | c++filt  >"${unit}.asm2"
+				
+				#as -g "${unit}.asm" -o "${object}"
+				g++ "${options[@]}" -c               "${unit}.cpp" -o "${object}"
+				
+				objects+=("${object}")
+			done
+		}
+		
+		g++ "${objects[@]}" -o 'Main'
+		
+		gdb -quiet -iex 'set auto-load safe-path /' 'Main' -ex 'start' -ex 'info sharedlibrary' -ex 'continue' -ex 'shell printf "\nBacktrace:\n{\n"' -ex 'backtrace' -ex 'shell printf "}\n\n"' -ex 'quit'
+		printf "}\n\n"
+	done
+}
+
+Main "$@"

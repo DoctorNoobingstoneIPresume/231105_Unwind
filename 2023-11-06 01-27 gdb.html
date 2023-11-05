@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- This file was created with the aha Ansi HTML Adapter. https://github.com/theZiz/aha -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/xml+xhtml; charset=UTF-8"/>
+<title>2023-11-06 01:27 gdb</title>
+</head>
+<body>
+<pre>
+# g 1:
+{
+options: -O2 -g
+Reading symbols from <span style="color:green;">Main</span>...
+Temporary breakpoint 1 at <span style="color:blue;">0x401080</span>: file <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>, line 4.
+Starting program: <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/Main</span> 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library &quot;<span style="color:green;">/lib/x86_64-linux-gnu/libthread_db.so.1</span>&quot;.
+
+Temporary breakpoint 1, <span style="color:olive;">main</span> () at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:4
+4	<span style="color:green;">float</span> <span style="font-weight:bold;">f</span> <span style="color:red;">(</span><span style="color:green;">float</span> arg<span style="color:red;">)</span>
+From                To                  Syms Read   Shared Object Library
+<span style="color:blue;">0x00007ffff7fc5090</span>  <span style="color:blue;">0x00007ffff7fee315</span>  Yes         <span style="color:green;">/lib64/ld-linux-x86-64.so.2</span>
+<span style="color:blue;">0x00007ffff7dff3e0</span>  <span style="color:blue;">0x00007ffff7f19b02</span>  Yes         <span style="color:green;">/usr/x86_64-pc-linux-gnu_gcc-14/lib64/libstdc++.so.6</span>
+<span style="color:blue;">0x00007ffff7c6f3a0</span>  <span style="color:blue;">0x00007ffff7cea8c8</span>  Yes         <span style="color:green;">/lib/x86_64-linux-gnu/libm.so.6</span>
+<span style="color:blue;">0x00007ffff7c3f6c0</span>  <span style="color:blue;">0x00007ffff7c5a1a5</span>  Yes         <span style="color:green;">/usr/x86_64-pc-linux-gnu_gcc-14/lib64/libgcc_s.so.1</span>
+<span style="color:blue;">0x00007ffff7a3b700</span>  <span style="color:blue;">0x00007ffff7bcdb3d</span>  Yes         <span style="color:green;">/lib/x86_64-linux-gnu/libc.so.6</span>
+Continuing.
+
+Program received signal SIGABRT, Aborted.
+<span style="color:olive;">__pthread_kill_implementation</span> (<span style="color:teal;">no_tid</span>=0, <span style="color:teal;">signo</span>=6, <span style="color:teal;">threadid</span>=140737347905344) at <span style="color:green;">./nptl/pthread_kill.c</span>:44
+44	./nptl/pthread_kill.c: No such file or directory.
+
+Backtrace:
+{
+#0  <span style="color:olive;">__pthread_kill_implementation</span> (<span style="color:teal;">no_tid</span>=0, <span style="color:teal;">signo</span>=6, <span style="color:teal;">threadid</span>=140737347905344) at <span style="color:green;">./nptl/pthread_kill.c</span>:44
+#1  <span style="color:olive;">__pthread_kill_internal</span> (<span style="color:teal;">signo</span>=6, <span style="color:teal;">threadid</span>=140737347905344) at <span style="color:green;">./nptl/pthread_kill.c</span>:78
+#2  <span style="color:olive;">__GI___pthread_kill</span> (<span style="color:teal;">threadid</span>=140737347905344, <span style="color:teal;">signo=signo@entry</span>=6) at <span style="color:green;">./nptl/pthread_kill.c</span>:89
+#3  <span style="color:blue;">0x00007ffff7a55476</span> in <span style="color:olive;">__GI_raise</span> (<span style="color:teal;">sig=sig@entry</span>=6) at <span style="color:green;">../sysdeps/posix/raise.c</span>:26
+#4  <span style="color:blue;">0x00007ffff7a3b7f3</span> in <span style="color:olive;">__GI_abort</span> () at <span style="color:green;">./stdlib/abort.c</span>:79
+#5  <span style="color:blue;">0x0000000000401076</span> in <span style="color:olive;">f&lt;0u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">f.cpp</span>:8
+#6  <span style="color:blue;">0x00000000004011e9</span> in <span style="color:olive;">f&lt;1u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#7  <span style="color:olive;">f&lt;2u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#8  <span style="color:olive;">f&lt;3u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#9  <span style="color:olive;">f&lt;4u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#10 <span style="color:olive;">f&lt;5u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#11 <span style="color:olive;">f&lt;6u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#12 <span style="color:olive;">f&lt;7u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#13 <span style="color:olive;">f&lt;8u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#14 <span style="color:olive;">f&lt;9u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#15 <span style="color:olive;">f&lt;10u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#16 <span style="color:olive;">f&lt;11u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#17 <span style="color:olive;">f&lt;12u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#18 <span style="color:olive;">f&lt;13u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#19 <span style="color:olive;">f&lt;14u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#20 <span style="color:olive;">f&lt;15u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#21 <span style="color:olive;">f&lt;16u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#22 <span style="color:olive;">f&lt;17u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#23 <span style="color:olive;">f&lt;18u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#24 <span style="color:olive;">f&lt;19u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#25 <span style="color:olive;">f&lt;20u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#26 <span style="color:olive;">f&lt;21u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#27 <span style="color:olive;">f&lt;22u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#28 <span style="color:olive;">f&lt;23u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#29 <span style="color:olive;">f&lt;24u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#30 <span style="color:olive;">f&lt;25u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#31 <span style="color:olive;">f&lt;26u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#32 <span style="color:olive;">f&lt;27u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#33 <span style="color:olive;">f&lt;28u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#34 <span style="color:olive;">f&lt;29u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#35 <span style="color:olive;">f&lt;30u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#36 <span style="color:olive;">f&lt;31u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#37 <span style="color:olive;">f&lt;32u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#38 <span style="color:blue;">0x0000000000401289</span> in <span style="color:olive;">f&lt;33u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#39 <span style="color:olive;">f&lt;34u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#40 <span style="color:olive;">f&lt;35u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#41 <span style="color:olive;">f&lt;36u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#42 <span style="color:olive;">f&lt;37u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#43 <span style="color:olive;">f&lt;38u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#44 <span style="color:olive;">f&lt;39u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#45 <span style="color:olive;">f&lt;40u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#46 <span style="color:olive;">f&lt;41u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#47 <span style="color:olive;">f&lt;42u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#48 <span style="color:olive;">f&lt;43u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#49 <span style="color:olive;">f&lt;44u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#50 <span style="color:olive;">f&lt;45u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#51 <span style="color:olive;">f&lt;46u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#52 <span style="color:olive;">f&lt;47u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#53 <span style="color:olive;">f&lt;48u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#54 <span style="color:olive;">f&lt;49u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#55 <span style="color:olive;">f&lt;50u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#56 <span style="color:olive;">f&lt;51u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#57 <span style="color:olive;">f&lt;52u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#58 <span style="color:olive;">f&lt;53u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#59 <span style="color:olive;">f&lt;54u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#60 <span style="color:olive;">f&lt;55u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#61 <span style="color:olive;">f&lt;56u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#62 <span style="color:olive;">f&lt;57u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#63 <span style="color:olive;">f&lt;58u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#64 <span style="color:olive;">f&lt;59u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#65 <span style="color:olive;">f&lt;60u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#66 <span style="color:olive;">f&lt;61u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#67 <span style="color:olive;">f&lt;62u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#68 <span style="color:olive;">f&lt;63u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#69 <span style="color:olive;">f&lt;64u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#70 <span style="color:blue;">0x0000000000401329</span> in <span style="color:olive;">f&lt;65u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#71 <span style="color:olive;">f&lt;66u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#72 <span style="color:olive;">f&lt;67u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#73 <span style="color:olive;">f&lt;68u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#74 <span style="color:olive;">f&lt;69u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#75 <span style="color:olive;">f&lt;70u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#76 <span style="color:olive;">f&lt;71u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#77 <span style="color:olive;">f&lt;72u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#78 <span style="color:olive;">f&lt;73u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#79 <span style="color:olive;">f&lt;74u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#80 <span style="color:olive;">f&lt;75u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#81 <span style="color:olive;">f&lt;76u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#82 <span style="color:olive;">f&lt;77u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#83 <span style="color:olive;">f&lt;78u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#84 <span style="color:olive;">f&lt;79u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#85 <span style="color:olive;">f&lt;80u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#86 <span style="color:olive;">f&lt;81u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#87 <span style="color:olive;">f&lt;82u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#88 <span style="color:olive;">f&lt;83u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#89 <span style="color:olive;">f&lt;84u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#90 <span style="color:olive;">f&lt;85u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#91 <span style="color:olive;">f&lt;86u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#92 <span style="color:olive;">f&lt;87u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#93 <span style="color:olive;">f&lt;88u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#94 <span style="color:olive;">f&lt;89u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#95 <span style="color:olive;">f&lt;90u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#96 <span style="color:olive;">f&lt;91u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#97 <span style="color:olive;">f&lt;92u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#98 <span style="color:olive;">f&lt;93u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#99 <span style="color:olive;">f&lt;94u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#100 <span style="color:olive;">f&lt;95u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#101 <span style="color:olive;">f&lt;96u&gt;</span> (<span style="color:teal;">arg=arg@entry</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#102 <span style="color:blue;">0x000000000040108d</span> in <span style="color:olive;">f&lt;97u&gt;</span> (<span style="color:teal;">arg</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#103 <span style="color:olive;">f&lt;98u&gt;</span> (<span style="color:teal;">arg</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#104 <span style="color:olive;">f&lt;99u&gt;</span> (<span style="color:teal;">arg</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#105 <span style="color:olive;">f&lt;100u&gt;</span> (<span style="color:teal;">arg</span>=0) at <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/f.hpp</span>:6
+#106 <span style="color:olive;">main</span> () at <span style="color:green;">Main.cpp</span>:7
+}
+
+}
+
+# g 0:
+{
+options: -O2
+Reading symbols from <span style="color:green;">Main</span>...
+(No debugging symbols found in <span style="color:green;">Main</span>)
+Temporary breakpoint 1 at <span style="color:blue;">0x401080</span>
+Starting program: <span style="color:green;">/home/ubuntu/Projects/231105_Unwind/Main</span> 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library &quot;<span style="color:green;">/lib/x86_64-linux-gnu/libthread_db.so.1</span>&quot;.
+
+Temporary breakpoint 1, <span style="color:blue;">0x0000000000401080</span> in <span style="color:olive;">main</span> ()
+From                To                  Syms Read   Shared Object Library
+<span style="color:blue;">0x00007ffff7fc5090</span>  <span style="color:blue;">0x00007ffff7fee315</span>  Yes         <span style="color:green;">/lib64/ld-linux-x86-64.so.2</span>
+<span style="color:blue;">0x00007ffff7dff3e0</span>  <span style="color:blue;">0x00007ffff7f19b02</span>  Yes         <span style="color:green;">/usr/x86_64-pc-linux-gnu_gcc-14/lib64/libstdc++.so.6</span>
+<span style="color:blue;">0x00007ffff7c6f3a0</span>  <span style="color:blue;">0x00007ffff7cea8c8</span>  Yes         <span style="color:green;">/lib/x86_64-linux-gnu/libm.so.6</span>
+<span style="color:blue;">0x00007ffff7c3f6c0</span>  <span style="color:blue;">0x00007ffff7c5a1a5</span>  Yes         <span style="color:green;">/usr/x86_64-pc-linux-gnu_gcc-14/lib64/libgcc_s.so.1</span>
+<span style="color:blue;">0x00007ffff7a3b700</span>  <span style="color:blue;">0x00007ffff7bcdb3d</span>  Yes         <span style="color:green;">/lib/x86_64-linux-gnu/libc.so.6</span>
+Continuing.
+
+Program received signal SIGABRT, Aborted.
+<span style="color:olive;">__pthread_kill_implementation</span> (<span style="color:teal;">no_tid</span>=0, <span style="color:teal;">signo</span>=6, <span style="color:teal;">threadid</span>=140737347905344) at <span style="color:green;">./nptl/pthread_kill.c</span>:44
+44	./nptl/pthread_kill.c: No such file or directory.
+
+Backtrace:
+{
+#0  <span style="color:olive;">__pthread_kill_implementation</span> (<span style="color:teal;">no_tid</span>=0, <span style="color:teal;">signo</span>=6, <span style="color:teal;">threadid</span>=140737347905344) at <span style="color:green;">./nptl/pthread_kill.c</span>:44
+#1  <span style="color:olive;">__pthread_kill_internal</span> (<span style="color:teal;">signo</span>=6, <span style="color:teal;">threadid</span>=140737347905344) at <span style="color:green;">./nptl/pthread_kill.c</span>:78
+#2  <span style="color:olive;">__GI___pthread_kill</span> (<span style="color:teal;">threadid</span>=140737347905344, <span style="color:teal;">signo=signo@entry</span>=6) at <span style="color:green;">./nptl/pthread_kill.c</span>:89
+#3  <span style="color:blue;">0x00007ffff7a55476</span> in <span style="color:olive;">__GI_raise</span> (<span style="color:teal;">sig=sig@entry</span>=6) at <span style="color:green;">../sysdeps/posix/raise.c</span>:26
+#4  <span style="color:blue;">0x00007ffff7a3b7f3</span> in <span style="color:olive;">__GI_abort</span> () at <span style="color:green;">./stdlib/abort.c</span>:79
+#5  <span style="color:blue;">0x0000000000401076</span> in <span style="color:olive;">float f&lt;0u&gt;(float)</span> ()
+#6  <span style="color:blue;">0x00000000004011e9</span> in <span style="color:olive;">float f&lt;32u&gt;(float)</span> ()
+#7  <span style="color:blue;">0x0000000000401289</span> in <span style="color:olive;">float f&lt;64u&gt;(float)</span> ()
+#8  <span style="color:blue;">0x0000000000401329</span> in <span style="color:olive;">float f&lt;96u&gt;(float)</span> ()
+#9  <span style="color:blue;">0x000000000040108d</span> in <span style="color:olive;">main</span> ()
+}
+
+}
+
+TimeQQ: elapsed      2.54 (ring3      2.32, ring0      0.16, CPU    97%), KiloBytes     90,532.
+</pre>
+</body>
+</html>
